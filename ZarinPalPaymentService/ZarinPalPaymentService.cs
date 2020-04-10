@@ -1,4 +1,5 @@
 ﻿using CharCode.ZarinPalPaymentService.Classes;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -15,11 +16,11 @@ namespace CharCode.ZarinPalPaymentService
         private readonly string merchantId;
         private const string paymentUrlBase = @"https://www.zarinpal.com/pg/StartPay/";
 
-        public ZarinPalPaymentService(IZarinPalPaymentRepository zarinPalPaymentRepository, string callbackURL, string merchantId)
+        public ZarinPalPaymentService(IZarinPalPaymentRepository zarinPalPaymentRepository, IConfiguration configuration)
         {
             this.zarinPalPaymentRepository = zarinPalPaymentRepository ?? throw new ArgumentNullException(nameof(zarinPalPaymentRepository));
-            this.callbackURL = callbackURL ?? throw new ArgumentNullException(nameof(callbackURL));
-            this.merchantId = merchantId ?? throw new ArgumentNullException(nameof(merchantId));
+            this.callbackURL = configuration["ZarinPal:CallbackURL"];
+            this.merchantId = configuration["ZarinPal:MerchantId"];
         }
 
         public async Task<PaymentRequestResult> PaymentRequestAsync(PaymentRequestConfig requestConfig)
