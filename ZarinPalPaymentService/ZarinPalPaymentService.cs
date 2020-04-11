@@ -27,7 +27,9 @@ namespace CharCode.ZarinPalPaymentService
         {
             var zp = GetService();
 
-            var response = await zp.PaymentRequestAsync(merchantId, requestConfig.Amount, requestConfig.Name, requestConfig.Email, requestConfig.PhoneNumber, callbackURL);
+            var paymentRequestRequest = GetPaymentRequestRequest(requestConfig);
+
+            var response = await zp.PaymentRequestAsync(paymentRequestRequest);
 
             await zp.CloseAsync();
 
@@ -44,6 +46,24 @@ namespace CharCode.ZarinPalPaymentService
             };
 
             return result;
+        }
+
+        private PaymentRequestRequest GetPaymentRequestRequest(PaymentRequestConfig requestConfig)
+        {
+            var request = new PaymentRequestRequest()
+            {
+                Body = new PaymentRequestRequestBody()
+                {
+                    Amount = requestConfig.Amount,
+                    CallbackURL = callbackURL,
+                    Description = requestConfig.Name,
+                    Email = requestConfig.Email,
+                    MerchantID = merchantId,
+                    Mobile = requestConfig.PhoneNumber
+                }
+            };
+
+            return request;
         }
 
         private static PaymentGatewayImplementationServicePortTypeClient GetService()

@@ -501,7 +501,6 @@ namespace ZarinPal
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class RefreshAuthorityRequest
     {
@@ -521,7 +520,6 @@ namespace ZarinPal
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://zarinpal.com/")]
     public partial class RefreshAuthorityRequestBody
     {
@@ -549,7 +547,6 @@ namespace ZarinPal
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class RefreshAuthorityResponse
     {
@@ -569,7 +566,6 @@ namespace ZarinPal
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.2")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.Runtime.Serialization.DataContractAttribute(Namespace="http://zarinpal.com/")]
     public partial class RefreshAuthorityResponseBody
     {
@@ -637,105 +633,34 @@ namespace ZarinPal
         {
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ZarinPal.PaymentRequestResponse> ZarinPal.PaymentGatewayImplementationServicePortType.PaymentRequestAsync(ZarinPal.PaymentRequestRequest request)
+        public System.Threading.Tasks.Task<ZarinPal.PaymentRequestResponse> PaymentRequestAsync(ZarinPal.PaymentRequestRequest request)
         {
             return base.Channel.PaymentRequestAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ZarinPal.PaymentRequestResponse> PaymentRequestAsync(string MerchantID, int Amount, string Description, string Email, string Mobile, string CallbackURL)
-        {
-            ZarinPal.PaymentRequestRequest inValue = new ZarinPal.PaymentRequestRequest();
-            inValue.Body = new ZarinPal.PaymentRequestRequestBody();
-            inValue.Body.MerchantID = MerchantID;
-            inValue.Body.Amount = Amount;
-            inValue.Body.Description = Description;
-            inValue.Body.Email = Email;
-            inValue.Body.Mobile = Mobile;
-            inValue.Body.CallbackURL = CallbackURL;
-            return ((ZarinPal.PaymentGatewayImplementationServicePortType)(this)).PaymentRequestAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ZarinPal.PaymentRequestWithExtraResponse> ZarinPal.PaymentGatewayImplementationServicePortType.PaymentRequestWithExtraAsync(ZarinPal.PaymentRequestWithExtraRequest request)
+        public System.Threading.Tasks.Task<ZarinPal.PaymentRequestWithExtraResponse> PaymentRequestWithExtraAsync(ZarinPal.PaymentRequestWithExtraRequest request)
         {
             return base.Channel.PaymentRequestWithExtraAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ZarinPal.PaymentRequestWithExtraResponse> PaymentRequestWithExtraAsync(string MerchantID, int Amount, string Description, string AdditionalData, string Email, string Mobile, string CallbackURL)
-        {
-            ZarinPal.PaymentRequestWithExtraRequest inValue = new ZarinPal.PaymentRequestWithExtraRequest();
-            inValue.Body = new ZarinPal.PaymentRequestWithExtraRequestBody();
-            inValue.Body.MerchantID = MerchantID;
-            inValue.Body.Amount = Amount;
-            inValue.Body.Description = Description;
-            inValue.Body.AdditionalData = AdditionalData;
-            inValue.Body.Email = Email;
-            inValue.Body.Mobile = Mobile;
-            inValue.Body.CallbackURL = CallbackURL;
-            return ((ZarinPal.PaymentGatewayImplementationServicePortType)(this)).PaymentRequestWithExtraAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ZarinPal.PaymentVerificationResponse> ZarinPal.PaymentGatewayImplementationServicePortType.PaymentVerificationAsync(ZarinPal.PaymentVerificationRequest request)
+        public System.Threading.Tasks.Task<ZarinPal.PaymentVerificationResponse> PaymentVerificationAsync(ZarinPal.PaymentVerificationRequest request)
         {
             return base.Channel.PaymentVerificationAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ZarinPal.PaymentVerificationResponse> PaymentVerificationAsync(string MerchantID, string Authority, int Amount)
-        {
-            ZarinPal.PaymentVerificationRequest inValue = new ZarinPal.PaymentVerificationRequest();
-            inValue.Body = new ZarinPal.PaymentVerificationRequestBody();
-            inValue.Body.MerchantID = MerchantID;
-            inValue.Body.Authority = Authority;
-            inValue.Body.Amount = Amount;
-            return ((ZarinPal.PaymentGatewayImplementationServicePortType)(this)).PaymentVerificationAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ZarinPal.PaymentVerificationWithExtraResponse> ZarinPal.PaymentGatewayImplementationServicePortType.PaymentVerificationWithExtraAsync(ZarinPal.PaymentVerificationWithExtraRequest request)
+        public System.Threading.Tasks.Task<ZarinPal.PaymentVerificationWithExtraResponse> PaymentVerificationWithExtraAsync(ZarinPal.PaymentVerificationWithExtraRequest request)
         {
             return base.Channel.PaymentVerificationWithExtraAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ZarinPal.PaymentVerificationWithExtraResponse> PaymentVerificationWithExtraAsync(string MerchantID, string Authority, int Amount)
-        {
-            ZarinPal.PaymentVerificationWithExtraRequest inValue = new ZarinPal.PaymentVerificationWithExtraRequest();
-            inValue.Body = new ZarinPal.PaymentVerificationWithExtraRequestBody();
-            inValue.Body.MerchantID = MerchantID;
-            inValue.Body.Authority = Authority;
-            inValue.Body.Amount = Amount;
-            return ((ZarinPal.PaymentGatewayImplementationServicePortType)(this)).PaymentVerificationWithExtraAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ZarinPal.GetUnverifiedTransactionsResponse> ZarinPal.PaymentGatewayImplementationServicePortType.GetUnverifiedTransactionsAsync(ZarinPal.GetUnverifiedTransactionsRequest request)
+        public System.Threading.Tasks.Task<ZarinPal.GetUnverifiedTransactionsResponse> GetUnverifiedTransactionsAsync(ZarinPal.GetUnverifiedTransactionsRequest request)
         {
             return base.Channel.GetUnverifiedTransactionsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<ZarinPal.GetUnverifiedTransactionsResponse> GetUnverifiedTransactionsAsync(string MerchantID)
-        {
-            ZarinPal.GetUnverifiedTransactionsRequest inValue = new ZarinPal.GetUnverifiedTransactionsRequest();
-            inValue.Body = new ZarinPal.GetUnverifiedTransactionsRequestBody();
-            inValue.Body.MerchantID = MerchantID;
-            return ((ZarinPal.PaymentGatewayImplementationServicePortType)(this)).GetUnverifiedTransactionsAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ZarinPal.RefreshAuthorityResponse> ZarinPal.PaymentGatewayImplementationServicePortType.RefreshAuthorityAsync(ZarinPal.RefreshAuthorityRequest request)
+        public System.Threading.Tasks.Task<ZarinPal.RefreshAuthorityResponse> RefreshAuthorityAsync(ZarinPal.RefreshAuthorityRequest request)
         {
             return base.Channel.RefreshAuthorityAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<ZarinPal.RefreshAuthorityResponse> RefreshAuthorityAsync(string MerchantID, string Authority, int ExpireIn)
-        {
-            ZarinPal.RefreshAuthorityRequest inValue = new ZarinPal.RefreshAuthorityRequest();
-            inValue.Body = new ZarinPal.RefreshAuthorityRequestBody();
-            inValue.Body.MerchantID = MerchantID;
-            inValue.Body.Authority = Authority;
-            inValue.Body.ExpireIn = ExpireIn;
-            return ((ZarinPal.PaymentGatewayImplementationServicePortType)(this)).RefreshAuthorityAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
@@ -767,7 +692,7 @@ namespace ZarinPal
         {
             if ((endpointConfiguration == EndpointConfiguration.PaymentGatewayImplementationServicePort))
             {
-                return new System.ServiceModel.EndpointAddress("https://ir.zarinpal.com/pg/services/WebGate/service");
+                return new System.ServiceModel.EndpointAddress("https://www.zarinpal.com/pg/services/WebGate/service");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
