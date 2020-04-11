@@ -86,16 +86,25 @@ namespace CharCode.ZarinPalPaymentService
         {
             var zp = GetService();
 
-            var authority = responseConfig.Authority;
-            var amount = await zarinPalPaymentRepository.GetAmountByAuthorityAsync(authority);
-            var response = await zp.PaymentVerificationAsync(merchantId, authority, amount);
+            var paymentVerificationRequest = await GetPaymentVerificationRequest(responseConfig);
+            var response = await zp.PaymentVerificationAsync(paymentVerificationRequest);
 
             await zp.CloseAsync();
 
-            var isSuccess = false;
-            var status = response.Body.Status;
+            var isSuccess = await SetResult(responseConfig, response);
 
-            if (IsSuccess(status))
+            var status = response.Body.Status;
+            var result = new PaymentResponseResult() { IsSuccess = isSuccess, ResponseCode = status };
+
+            return result;
+        }
+
+        private async Task<bool> SetResult(PaymentResponseConfig responseConfig, PaymentVerificationResponse response)
+        {
+            var isSuccess = false;
+            var authority = responseConfig.Authority;
+
+            if (IsSuccess(response.Body.Status))
             {
                 await SetSuccessAsync(authority, response);
                 isSuccess = true;
@@ -105,9 +114,22 @@ namespace CharCode.ZarinPalPaymentService
                 await SetFailAsync(authority);
             }
 
-            var result = new PaymentResponseResult() { IsSuccess = isSuccess, ResponseCode = status };
+            return isSuccess;
+        }
 
-            return result;
+        private async Task<PaymentVerificationRequest> GetPaymentVerificationRequest(PaymentResponseConfig responseConfig)
+        {
+            string authority = responseConfig.Authority;
+            int amount = await zarinPalPaymentRepository.GetAmountByAuthorityAsync(authority);
+            return new PaymentVerificationRequest()
+            {
+                Body = new PaymentVerificationRequestBody()
+                {
+                    Amount = amount,
+                    Authority = authority,
+                    MerchantID = merchantId
+                }
+            };
         }
 
         private async Task SetSuccessAsync(string authority, PaymentVerificationResponse response)
