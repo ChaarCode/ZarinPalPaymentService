@@ -18,5 +18,7 @@ namespace CharCode.ZarinPalPaymentService
         Task SetSuccessAsync(string authority, long refId);
 
         Task SetFailAsync(string authority);
+
+        Task<int> GetAmountByAuthorityAsync(string authority);
     }
 }

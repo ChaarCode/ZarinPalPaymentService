@@ -67,7 +67,8 @@ namespace CharCode.ZarinPalPaymentService
             var zp = GetService();
 
             var authority = responseConfig.Authority;
-            var response = await zp.PaymentVerificationAsync(merchantId, authority, responseConfig.Amount);
+            var amount = await zarinPalPaymentRepository.GetAmountByAuthorityAsync(authority);
+            var response = await zp.PaymentVerificationAsync(merchantId, authority, amount);
 
             await zp.CloseAsync();
 
